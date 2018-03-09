@@ -110,10 +110,10 @@ int main()
 
 		//sf::Time elapsed = clock.getElapsedTime();
 		//std::cout << "TIME: " << elapsed.asSeconds() << std::endl;
-		std::cout << "POS: " << player.position.x << std::endl;
+		//std::cout << "POS: " << player.position.x << std::endl;
 
 		player.Update(deltaTime);
-		laser.UpdateLaser2(deltaTime);
+		laser.UpdateLaser();
 
 		enemy.Update();
 		enemy1.Update();
@@ -135,14 +135,12 @@ int main()
 
 
 		for (int i = 0; i < bullets.size(); i++) {
-
-
-			bullets[i].UpdateLaser2(deltaTime);
+			bullets[i].UpdateLaser();
 			bullets[i].Draw(window);
 		}
 
 
-		laser.Draw(window);
+
 
 		window.display();
 	

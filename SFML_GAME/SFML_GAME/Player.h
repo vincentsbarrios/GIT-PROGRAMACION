@@ -10,7 +10,7 @@ public:
 
 	void Update(float deltaTime);
 	void Draw(sf::RenderWindow& windows);
-	void UpdateLaser2(float deltaTime);
+	void UpdateLaser();
 	bool laserm = true;
 private:
 	sf::RectangleShape body;

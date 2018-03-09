@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+sf::Vector2f posLaser;
 
 Player::Player(sf::Texture* texture, float speed)
 {
@@ -12,8 +13,6 @@ Player::Player(sf::Texture* texture, float speed)
 	body.setTexture(texture);
 
 	laser.setSize(sf::Vector2f(100.0f, 100.0f));
-	laser.setOrigin(-400,-780);
-
 
 }
 
@@ -26,6 +25,7 @@ void Player::Update(float deltaTime)
 {
 	sf::Vector2f movement(0.0f, 0.0f);
 	position = body.getPosition();
+	posLaser = position;
 	
 	if (position.x <= 380) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -35,7 +35,6 @@ void Player::Update(float deltaTime)
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 			movement.x -= speed * deltaTime;
 	}
-	//std::cout << "POS: " << position.x << std::endl;
 
 	body.move(movement);
 }
@@ -44,24 +43,24 @@ void Player::Update(float deltaTime)
 void Player::Draw(sf::RenderWindow& windows)
 {
 	windows.draw(body);
-
-
 }
 
-void Player::UpdateLaser2(float deltaTime)
+void Player::UpdateLaser()
 {
 	sf::Vector2f movement(0.0f, 0.0f);
-	position = body.getPosition();
+
+
 	if (laserm == true) {
-		movement.y -= 0.5f;
+		movement.y -= 2.f;
 	}
 	if (position.y <= -900) {
 		laserm = false;
 	}
 	
+	std::cout << posLaser.x << std::endl;
 
 	body.move(movement);
-	laser.move(movement);
+
 
 }
 
