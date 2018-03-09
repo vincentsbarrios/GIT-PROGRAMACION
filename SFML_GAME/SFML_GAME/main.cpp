@@ -6,11 +6,12 @@
 #include "Player.h"
 #include "Enemy.h"
 #include <vector>
+#include "Laser.h"
 
 
 using namespace std;
 
-vector <Player> bullets;
+vector <Laser> bullets;
 
 
 int main()
@@ -34,26 +35,23 @@ int main()
 	Player player(&playerTexture, 0.5f);
 	float deltaTime = 1.0f;
 
+
 	sf::Texture laserTexture;
 	laserTexture.loadFromFile("laser.png");
-	Player laser(&laserTexture, 0.5f);
+
+	
 	
 
 	//ENEMIES
 	sf::Texture enemyTexture;
-	enemyTexture.loadFromFile("enemy2.png");
+	enemyTexture.loadFromFile("enemy3.png");
 
 	sf::Texture enemyTexture1;
-	enemyTexture1.loadFromFile("enemy2.png");
+	enemyTexture1.loadFromFile("enemy.png");
 
-	sf::Texture enemyTexture2;
-	enemyTexture.loadFromFile("enemy2.png");
-
-	sf::Texture enemyTexture3;
-	enemyTexture1.loadFromFile("enemy2.png");
 
 	Enemy enemy(&enemyTexture,-100,-10, 0.4f);
-	Enemy enemy1(&enemyTexture1, -300, -10, 0.4f);
+	Enemy enemy1(&enemyTexture, -300, -10, 0.4f);
 	Enemy enemy2(&enemyTexture, -500, -10, 0.4f);
 	Enemy enemy3(&enemyTexture, -700, -10, 0.4f);
 
@@ -96,7 +94,7 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			
 			if (shoot == true) {
-				bullets.push_back(Player(&laserTexture, 0.5f));
+				bullets.push_back(Laser(&laserTexture, player.position.x + 400));
 				shoot = false;
 			}
 		}
@@ -105,15 +103,13 @@ int main()
 			shoot = true;
 		}
 
-
-
+	
 
 		//sf::Time elapsed = clock.getElapsedTime();
 		//std::cout << "TIME: " << elapsed.asSeconds() << std::endl;
 		//std::cout << "POS: " << player.position.x << std::endl;
 
 		player.Update(deltaTime);
-		laser.UpdateLaser();
 
 		enemy.Update();
 		enemy1.Update();
@@ -137,6 +133,12 @@ int main()
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets[i].UpdateLaser();
 			bullets[i].Draw(window);
+
+
+
+			if (bullets[i].position.y > 900)
+				bullets[i].~Laser();
+
 		}
 
 

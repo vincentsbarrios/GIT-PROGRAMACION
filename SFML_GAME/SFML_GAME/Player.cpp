@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Laser.h"
 #include <iostream>
 using namespace std;
 
@@ -12,7 +13,6 @@ Player::Player(sf::Texture* texture, float speed)
 	body.setOrigin(-400, -780);
 	body.setTexture(texture);
 
-	laser.setSize(sf::Vector2f(100.0f, 100.0f));
 
 }
 
@@ -36,33 +36,18 @@ void Player::Update(float deltaTime)
 			movement.x -= speed * deltaTime;
 	}
 
+	std::cout << position.x << std::endl;
+
 	body.move(movement);
 }
-
 
 void Player::Draw(sf::RenderWindow& windows)
 {
 	windows.draw(body);
 }
 
-void Player::UpdateLaser()
-{
-	sf::Vector2f movement(0.0f, 0.0f);
 
 
-	if (laserm == true) {
-		movement.y -= 2.f;
-	}
-	if (position.y <= -900) {
-		laserm = false;
-	}
-	
-	std::cout << posLaser.x << std::endl;
-
-	body.move(movement);
-
-
-}
 
 
 

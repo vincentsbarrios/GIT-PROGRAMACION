@@ -1,1 +1,9 @@
-﻿
+﻿  Player.cpp
+  main.cpp
+c:\users\ghost\desktop\sfml_game\sfml_game\main.cpp(97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ghost\desktop\sfml_game\sfml_game\main.cpp(133): warning C4018: '<': signed/unsigned mismatch
+  Laser.cpp
+c:\users\ghost\desktop\sfml_game\sfml_game\laser.cpp(7): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Enemy.cpp
+  Generating Code...
+  SFML_GAME.vcxproj -> C:\Users\Ghost\Desktop\SFML_GAME\Debug\SFML_GAME.exe
